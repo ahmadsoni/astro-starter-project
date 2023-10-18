@@ -11,8 +11,10 @@
 		"preview": "astro preview",
 		"start": "astro dev",
 		"lint:scss": "stylelint \"src/**/*.{astro,scss}\"",
+		"lint": "eslint .",
 		"prettier:check": "prettier --cache --check --plugin-search-dir=. .",
-		"format": "prettier --cache --write --plugin-search-dir=. ."
+		"format": "prettier --cache --write --plugin-search-dir=. .",
+		"validate-commit-msg": "node validate-commit-msg.js"
 	},
 	"lint-staged": {
 		"**/*.{js,jsx,ts,tsx}": [
@@ -24,13 +26,16 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged --timeout 40000 && npm run build"
+			"pre-commit": "lint-staged --timeout 40000 && npm run build",
+			"pre-push": "npm run build",
+			"commit-msg": "npm run validate-commit-msg"
 		}
 	},
 	"dependencies": {
 		"astro": "^3.3.1"
 	},
 	"devDependencies": {
+		"@types/node": "^20.8.6",
 		"@typescript-eslint/eslint-plugin": ">=6.0.0",
 		"@typescript-eslint/parser": "^6.8.0",
 		"astro-eslint-parser": "^0.16.0",
@@ -39,7 +44,7 @@
 		"eslint-config-xo-typescript": "^1.0.1",
 		"eslint-plugin-astro": "^0.29.1",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
-		"husky": "^8.0.3",
+		"husky": "^8.0.0",
 		"lint-staged": "^15.0.1",
 		"prettier": "^3.0.3",
 		"prettier-plugin-astro": "^0.12.0",

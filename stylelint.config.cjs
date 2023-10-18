@@ -1,22 +1,26 @@
 module.exports = {
-	extends: ['stylelint-config-html', '@tinkoff/stylelint-config', 'stylelint-config-standard-scss'],
+	extends: [
+		'stylelint-config-html',
+		'@tinkoff/stylelint-config',
+		'stylelint-config-standard-scss',
+	],
 	plugins: ['stylelint-scss', 'stylelint-csstree-validator'],
 	overrides: [
 		{
 			files: ['**/*.{astro,html}'],
-			customSyntax: 'postcss-html'
+			customSyntax: 'postcss-html',
 		},
 		{
 			files: ['src/**/*.{scss,css}'],
-			customSyntax: 'postcss-scss'
-		}
+			customSyntax: 'postcss-scss',
+		},
 	],
 	rules: {
 		'csstree/validator': {
 			syntaxExtensions: ['sass'],
 			ignoreAtrules: ['custom-at-rule', '-webkit-keyframes'],
 			ignoreProperties: ['composes', 'mask', '-webkit-mask', '-webkit'],
-			ignoreValue: '^oklch'
+			ignoreValue: '^oklch',
 		},
 		'at-rule-no-unknown': null,
 		'scss/at-rule-no-unknown': true,
@@ -26,8 +30,11 @@ module.exports = {
 		'max-empty-lines': 2,
 		'no-descending-specificity': true,
 		'no-duplicate-selectors': true,
-		'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global', 'nth-last-col'] }]
+		'selector-pseudo-class-no-unknown': [
+			true,
+			{ ignorePseudoClasses: ['global', 'nth-last-col'] },
+		],
 	},
 	ignoreFiles: ['node_modules/*'],
-	defaultSeverity: 'warning'
-}
+	defaultSeverity: 'warning',
+};

@@ -4,11 +4,11 @@ module.exports = {
 		{
 			files: '*.astro',
 			options: {
-				parser: 'astro'
-			}
-		}
+				parser: 'astro',
+			},
+		},
 	],
 	singleQuote: true,
 	semi: false,
-	trailingComma: 'none'
-}
+	trailingComma: 'none',
+};
