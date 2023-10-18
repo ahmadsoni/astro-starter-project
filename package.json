@@ -1,0 +1,54 @@
+{
+	"name": "grapql-car-apps",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"astro": "astro",
+		"build": "astro check && tsc --noEmit && astro build",
+		"check": "astro check && npm run prettier:check",
+		"dev": "astro dev",
+		"prepare": "husky install",
+		"preview": "astro preview",
+		"start": "astro dev",
+		"lint:scss": "stylelint \"src/**/*.{astro,scss}\"",
+		"prettier:check": "prettier --cache --check --plugin-search-dir=. .",
+		"format": "prettier --cache --write --plugin-search-dir=. ."
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"npm eslint --fix",
+			"eslint --cache --fix"
+		],
+		"*.{ts,css,md,html,json,scss}": [
+			"stylelint --fix",
+			 "npm run format"
+		],
+		"*.{html,json}": "prettier --cache --write --plugin-search-dir=. .",
+		"*.--write": "prettier --write"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged --timeout 40000 && npm run build"
+		}
+	},
+	"dependencies": {
+		"astro": "^3.3.1"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": ">=6.0.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"astro-eslint-parser": "^0.16.0",
+		"eslint": "^8.51.0",
+		"eslint-config-xo": "^0.43.1",
+		"eslint-config-xo-typescript": "^1.0.1",
+		"eslint-plugin-astro": "^0.29.1",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"husky": "^8.0.3",
+		"lint-staged": "^15.0.1",
+		"prettier": "^3.0.3",
+		"prettier-plugin-astro": "^0.12.0",
+		"stylelint": "^15.11.0",
+		"stylelint-config-standard": "^34.0.0",
+		"typescript": ">=4.7"
+	}
+}
