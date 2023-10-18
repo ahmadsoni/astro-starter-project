@@ -15,16 +15,12 @@
 		"format": "prettier --cache --write --plugin-search-dir=. ."
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"npm eslint --fix",
-			"eslint --cache --fix"
+		"**/*.{js,jsx,ts,tsx}": [
+			"npm run lint --fix"
 		],
-		"*.{ts,css,md,html,json,scss}": [
-			"stylelint --fix",
-			 "npm run format"
-		],
-		"*.{html,json}": "prettier --cache --write --plugin-search-dir=. .",
-		"*.--write": "prettier --write"
+		"*.{ts,tsx}": "eslint --cache --fix",
+		"*.--write": "prettier --write",
+		"*.{ts,css,md,html,json}": "npm run format"
 	},
 	"husky": {
 		"hooks": {
